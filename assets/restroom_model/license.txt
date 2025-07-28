@@ -1,0 +1,8 @@
+Model Information:
+* title:	Restroom Model
+* source:	https://sketchfab.com/3d-models/restroom-model-378817fef6564d8cb10da89b0c0b3f55
+* author:	saurabh.buradkar7 (https://sketchfab.com/saurabh.buradkar7)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

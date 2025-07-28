@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Saito Lab</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@4.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
+
+    <!--Physics-->
+    <script src="https://cdn.jsdelivr.net/gh/MozillaReality/ammo.js@8bbc0ea/builds/ammo.wasm.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.js"></script>
+    
+    <!--Full Screen Prompt-->
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: black;
+        width: 100%;
+        height: 100%;
+      }
+
+      #fullscreenPrompt {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: white;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 8px 14px;
+        font-family: sans-serif;
+        font-size: 14px;
+        border-radius: 6px;
+        z-index: 1000;
+        user-select: none;
+        cursor: pointer;
+        display: block;
+      }
+
+      a-scene {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="fullscreenPrompt">Click here to enter full screen</div>
+    <a-scene
+      joystick
+      physics="gravity: -9.8; restitution: 0.7"
+      loading-screen="dotsColor: red; backgroundColor: black"
+      vr-mode-ui="enabled: false"
+      light="defaultLightsEnabled: false"
+    >
+
+      <!-- Rig with camera -->
+      <a-entity id="rig" position="30 1.6 0" rotation="0 270 0"movement-controls>
+        <a-entity 
+          camera 
+          look-controls="pointerLockEnabled: true"
+          wasd-controls="acceleration: 15"
+          position="0 1.5 0">
+        </a-entity>
+      </a-entity>
+      
+    </a-entity>
+  </a-entity>
+      
+      <a-assests>
+        <a-asset-items id="elevator" src="assets/elevator/scene.gltf"></a-asset-items>
+        <a-asset-items id="bench" src="assets/bench/scene.gltf"></a-asset-items>
+        <a-asset-items id="cabinet" src="assets/armored_cabinet/scene.gltf"></a-asset-items>
+        <a-asset-items id="door" src="assets/door_with_frame/scene.gltf"></a-asset-items>
+        <a-asset-items id="restroomsign" src="assets/restroom_model/scene.gltf"></a-asset-items>
+        <a-asset-items id="modernbathroom" src="assets/modern_bathroom/scene.gltf"></a-asset-items>
+        <a-asset-items id="fireexit" src="assets/low_poly_door_04/scene.gltf"></a-asset-items>
+        <a-asset-items id="hospitaldoor" src="assets/hospital_door/scene.gltf"></a-asset-items>
+        <a-asset-items id="window" src="assets/glass_window/scene.gltf"></a-asset-items>
+        <a-asset-items id="office" src="assets/office_props_pack/scene.gltf"></a-asset-items>
+        <a-asset-items id="picture" src="assets/wall_picture/scene.gltf"></a-asset-items>
+        <a-asset-items id="desk" src="assets/office_desk___6mb/scene.gltf"></a-asset-items>
+
+
+
+        <img id="wallColor" src="texture/Plastic013A_1K-JPG_Color.jpg">
+      </a-assests>
+
+      <a-light type="ambient" color="#ffffff" intensity="0.6"></a-light>
+
+      <a-entity rotation="0 180 0" position="-5 4.3 40" gltf-model="#elevator" scale="0.02 0.02 0.02" static-body></a-entity> <!--elevator 1-->
+      <a-entity rotation="0 180 0" position="-10 4.3 40" gltf-model="#elevator" scale="0.02 0.02 0.02" static-body></a-entity> <!--elevator 2-->
+      <a-entity rotation="0 75 0" position="-5.2 1 30.3" gltf-model="#bench" scale="30 30 30" static-body></a-entity> <!--elevator 2-->
+      <a-entity rotation="0 90 0" position="2.8 0.5 30" gltf-model="#door" scale="0.02 0.02 0.02" static-body></a-entity> <!--Restroom door-->
+      <a-entity rotation="0 90 0" position="3.25 3 29" gltf-model="#restroomsign" scale="0.5 0.5 0.5" static-body></a-entity> <!--WC Sign-->
+      <a-entity rotation="0 270 0" position="12.5 3.8 30" gltf-model="#modernbathroom" scale="2.5 2.5 2.5" static-body></a-entity> <!--Restroom-->
+      <a-entity rotation="0 0 0" position="0 0.4 59.8" gltf-model="#fireexit" scale="1.5 1.5 1.5" static-body></a-entity> <!--Exit door -->
+      <a-entity rotation="0 0 0" position="2 0.5 -9.9" gltf-model="#hospitaldoor" scale="0.0029 0.0029 0.0029" static-body></a-entity> <!--Stair door -->
+      <a-entity rotation="0 180 0" position="-2 0.5 -9.9" gltf-model="#hospitaldoor" scale="0.0029 0.0029 0.0029" static-body></a-entity> <!--Stair door 2-->
+      <a-entity rotation="0 90 0" position="-3.1 0.5 -7.55" gltf-model="#hospitaldoor" scale="0.0029 0.0029 0.0029" static-body></a-entity> <!--Lab door 1-->
+      <a-entity rotation="0 270 0" position="3.1 0.5 -5.47" gltf-model="#hospitaldoor" scale="0.0029 0.0029 0.0029" static-body></a-entity> <!--Lab door 2-->
+      <a-entity rotation="0 270 0" position="30 0.5 4" gltf-model="#hospitaldoor" scale="0.0029 0.0029 0.0029" static-body></a-entity> <!--Lab door 3-->
+      <a-entity rotation="0 270 0" position="30 0.5 18" gltf-model="#hospitaldoor" scale="0.0029 0.0029 0.0029" static-body></a-entity> <!--Lab door 4-->
+      <a-entity rotation="0 0 0" position="48.7 0.6 -1" gltf-model="#window" scale="1 2.3 2" static-body></a-entity> <!--Window 1-->
+      <a-entity rotation="0 0 0" position="48.7 0.6 7" gltf-model="#window" scale="1 2.3 2" static-body></a-entity> <!--Window 2-->
+      <a-entity rotation="0 270 0" position="35 0.6 -5" gltf-model="#office" scale="0.5 0.5 0.5" static-body></a-entity> <!--Office-->
+      <a-entity rotation="-25 270 0" position="43 3 0" gltf-model="#picture" scale="1 1 1" static-body></a-entity> <!--picture-->
+      <a-entity rotation="0 0 0" position="35 0.6 -2" gltf-model="#desk" scale="1 0.8 0.8" static-body></a-entity> <!--Desk 1-->
+      <a-entity rotation="0 90 0" position="40 0.6 0" gltf-model="#desk" scale="3 1 1" static-body></a-entity> <!--Desk 2-->
+
+
+      <!--Floor settings-->
+      <a-plane position="0 0.5 0" rotation="-90 0 0" width="100" height="200" color="" src="texture/marble_floor_no_tile.jpg" repeat="50 50" static-body></a-plane> 
+      
+      <!-- Lab Walls -->
+    <a-box position="0 5 -10" depth="0.1" height="10" width="100" color="#f0f0f0" material="src: #wallColor" static-body></a-box> <!-- front wall -->
+    <a-box position="-10.6 5 29.5" depth="0.1" height="10" width="15" color="#f0f0f0" material="src: #wallColor" static-body></a-box> <!-- front wall 2 of elevator-->
+    <a-box position="28.1 5 24" depth="0.1" height="10" width="50" color="#f0f0f0" material="src: #wallColor" static-body></a-box> <!-- front wall 3-->
+    <a-box position="40 5 10" depth="0.1" height="10" width="20" color="#f0f0f0" material="src: #wallColor" static-body></a-box> <!-- front wall 4-->
+    <a-box position="-7.5 10 40" depth="0.1" height="20" width="1.4" color="#f0f0f0" material="src: #wallColor" static-body></a-box>  <!-- back wall pillar-->
+    <a-box position="-16.8 5 40" depth="0.1" height="10" width="10" color="#f0f0f0" material="src: #wallColor" static-body></a-box>  <!-- back wall 1-->
+    <a-box position="-8.1 10 40" depth="0.1" height="10" width="10" color="#f0f0f0" material="src: #wallColor" static-body></a-box>  <!-- back wall 2-->
+    <a-box position="0 5 60" depth="0.1" height="10" width="10" color="#f0f0f0" material="src: #wallColor" static-body></a-box>  <!-- back wall 3-->
+    <a-box position="-10 5 0" depth="20" height="10" width="1" color="#f0f0f0" material="src: #wallColor" static-body></a-box> <!-- left wall -->
+    <a-box position="-15 5 30" depth="20" height="10" width="1" color="#f0f0f0" material="src: #wallColor" static-body></a-box> <!-- left wall 2-->
+    <a-box position="30 5 0" depth="55" height="10" width="0.01" color="#f0f0f0" material="src: #wallColor" static-body></a-box>  <!-- right wall -->
+    <a-box position="44 5 0" depth="2.5" height="10" width="0.3" material="src: #wallColor;" static-body> </a-box>  <!-- right wall 2-->
+    <a-box position="44 5 -8.4" depth="3.3" height="10" width="0.3" material="src: #wallColor;" static-body> </a-box>  <!-- right wall 3-->
+    <a-box position="44 5 8.3" depth="3.3" height="10" width="0.3" material="src: #wallColor;" static-body> </a-box>  <!-- right wall 4-->
+    <a-box position="0 10 20" depth="130" height="0.1" width="100" color="#dddddd" src="texture/ceiling_tile.jpg" repeat="24 24" static-body></a-box>  <!-- ceiling -->
+
+
+    <a-box position="-3.25 5 12" depth="35" height="10" width="0.3" material="src: #wallColor;" static-body> </a-box> <!-- Hallway left wall -->
+    <a-box position="-3.25 5 57.5" depth="35" height="10" width="0.3" material="src: #wallColor;" static-body> </a-box> <!-- Hallway left wall 2-->
+    <a-box position="-3.25 5 -10" depth="5" height="10" width="0.3" material="src: #wallColor;" static-body> </a-box> <!-- Hallway left wall 3-->
+    <a-box position="-3.25 8 -5.1" depth="5" height="8" width="0.3" material="src: #wallColor;" static-body> </a-box> <!-- Hallway left wall 4-->
+    <a-box position="-3.25 5 0" depth="5" height="10" width="0.3" material="src: #wallColor;" static-body> </a-box> <!-- Hallway left wall 3-->
+    <a-box position="3.25 5 17" depth="45" height="10" width="0.3" material="src: #wallColor;" static-body> </a-box>  <!-- Hallway right wall -->
+    <a-box position="3.25 5 60" depth="45" height="10" width="0.3" material="src: #wallColor;" static-body> </a-box>  <!-- Hallway right wall 2-->
+    <a-box position="3.25 5 -10" depth="5" height="10" width="0.3" material="src: #wallColor;" static-body> </a-box>  <!-- Hallway right wall 3-->
+    <a-box position="3.25 8 -5.1" depth="5" height="8" width="0.3" material="src: #wallColor;" static-body> </a-box> <!-- Hallway left wall 4-->
+    
+    
+    
+    <a-entity light="type: point; intensity: 3; distance: 100; decay: 70" position="0 8 -7"></a-entity> <!-- roof light 1-->
+    <a-entity light="type: point; intensity: 3; distance: 100; decay: 70" position="0 8 0"></a-entity> <!-- roof light 2-->
+    <a-entity light="type: point; intensity: 3; distance: 100; decay: 70" position="0 8 7"></a-entity> <!-- roof light 3-->
+    <a-entity light="type: point; intensity: 3; distance: 100; decay: 70" position="0 8 14"></a-entity> <!-- roof light 4-->
+    <a-entity light="type: point; intensity: 3; distance: 100; decay: 70" position="0 8 21"></a-entity> <!-- roof light 5-->
+    <a-entity light="type: point; intensity: 3; distance: 100; decay: 70" position="0 8 28"></a-entity> <!-- roof light 6-->
+    <a-entity light="type: point; intensity: 3; distance: 100; decay: 70" position="0 8 35"></a-entity> <!-- roof light 7-->
+    <a-entity light="type: point; intensity: 3; distance: 100; decay: 70" position="-9 8 35"></a-entity> <!-- roof light 8-->
+    <a-entity light="type: point; intensity: 3; distance: 100; decay: 70" position="0 8 42"></a-entity> <!-- roof light 9-->
+    <a-entity light="type: point; intensity: 3; distance: 100; decay: 70" position="0 8 49"></a-entity> <!-- roof light 10-->
+    <a-entity light="type: point; intensity: 3; distance: 100; decay: 70" position="0 8 56"></a-entity> <!-- roof light 11-->
+
+    <a-entity light="type: point; intensity: 3; distance: 300; decay: 300" position="0 3 -7"></a-entity> <!-- floor light 1-->
+    <a-entity light="type: point; intensity: 3; distance: 300; decay: 300" position="0 3 0"></a-entity> <!-- floor light 2-->
+    <a-entity light="type: point; intensity: 3; distance: 300; decay: 300" position="0 3 7"></a-entity> <!-- floor light 3-->
+    <a-entity light="type: point; intensity: 3; distance: 300; decay: 300" position="0 3 14"></a-entity> <!-- floor light 4-->
+    <a-entity light="type: point; intensity: 3; distance: 300; decay: 300" position="0 3 21"></a-entity> <!-- floor light 5-->
+    <a-entity light="type: point; intensity: 3; distance: 300; decay: 300" position="0 3 28"></a-entity> <!-- floor light 6-->
+    <a-entity light="type: point; intensity: 3; distance: 300; decay: 300" position="0 3 35"></a-entity> <!-- floor light 7-->
+    <a-entity light="type: point; intensity: 3; distance: 300; decay: 300" position="-9 3 35"></a-entity> <!-- floor light 8-->
+    <a-entity light="type: point; intensity: 3; distance: 300; decay: 300" position="0 3 42"></a-entity> <!-- floor light 9-->
+    <a-entity light="type: point; intensity: 3; distance: 300; decay: 300" position="0 3 49"></a-entity> <!-- floor light 10-->
+    <a-entity light="type: point; intensity: 3; distance: 300; decay: 300" position="0 3 56"></a-entity> <!-- floor light 11-->
+
+    <a-entity light="type: point; intensity: 3; distance: 200; decay: 20" position="12 3 30"></a-entity> <!-- Bathroom light-->
+
+    <a-sky color="#ECECEC" src="texture/USC_Zonal_360.jpg" rotation="0 180 0"></a-sky>
+
+    </a-scene>
+
+
+    <script>
+      const prompt = document.getElementById('fullscreenPrompt');
+
+      //Fullscreen enter and lock pointer
+      function goFullscreen() {
+        const el = document.documentElement;
+        if (el.requestFullscreen) el.requestFullscreen();
+        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+        else if (el.mozRequestFullScreen) el.mozRequestFullScreen();
+        else if (el.msRequestFullscreen) el.msRequestFullscreen();
+
+        prompt.textContent = 'Press ESC to exit';
+      }
+
+      //Reprompt fullscreen when exited
+      document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) {
+          prompt.textContent = 'Click to enter full screen';
+        }
+      });
+
+      prompt.addEventListener('click', goFullscreen);
+
+      //AFrame Default Fullscreen Removal
+      const observer = new MutationObserver(() => {
+        const fsBtn = document.querySelector('.a-enter-vr-button');
+        if (fsBtn) fsBtn.style.display = 'none';
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    </script>
+  </body>
+  
+  
+</html>
